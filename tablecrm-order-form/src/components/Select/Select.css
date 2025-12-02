@@ -1,0 +1,24 @@
+.select-container{
+    position: absolute;
+    width: 400px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px #0f172a14;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 200px;
+    /* display: none; */
+}
+
+
+.select-item{
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.select-item:hover{
+    background: #3b83f642;
+}
