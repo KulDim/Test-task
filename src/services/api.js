@@ -44,7 +44,7 @@ export const createApiClient = (token) => {
             return response.data
         },
         webapps: async () =>{
-            const response = await client.get(`/webapp/?token=${token}`);
+            const response = await client.get(`/nomenclature/?token=${token}&limit=100`);
             return response.data
         },
         alt_prices: async (id) =>{           
