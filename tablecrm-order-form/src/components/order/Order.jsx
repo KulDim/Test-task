@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Order.css";
 import { createApiClient } from "../../services/api";
-import Select from "./Select/Select";
+import Select from "../Select/Select";
 
 function Order() {
 	const [token, setToken] = useState(localStorage.getItem("token") || "");
