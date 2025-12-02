@@ -237,9 +237,6 @@ function Order() {
 							</div>
 						);
 					})}
-				</>
-			)}
-
 			<div className="basket-summary">
 				<div className="basket-summary-item">
 					<div>Контрагент:</div>
@@ -256,6 +253,9 @@ function Order() {
 			</div>
 			<button className="order-button">Создать продажу</button>
 			<button className="order-button" style={{ background: "#f3f4f6", color: "#000" }}>Создать и провести</button>
+				</>
+			)}
+
 		</div>
 	);
 }
