@@ -11,8 +11,8 @@
     overflow-y: auto;
     max-height: 200px;
     /* display: none; */
+    z-index: 2;
 }
-
 
 .select-item{
     padding: 5px 10px;
@@ -21,4 +21,36 @@
 
 .select-item:hover{
     background: #3b83f642;
+}
+
+.input-container{
+    display: flex;
+}
+
+.select-loader {
+    position: absolute;
+    margin-top: 8px;
+    transform: translateX(-30px);
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 123, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #007bff;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+.spinner.small {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }

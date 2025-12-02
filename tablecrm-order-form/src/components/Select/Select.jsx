@@ -1,39 +1,39 @@
-import { useState, useEffect, useRef } from "react"
-import "./Select.css"
+import { useState, useEffect, useRef } from "react";
+import "./Select.css";
 
 function Select({ setData, options, searchKeys, selectOption, placeholder, setValueNot = false }) {
-	const [value, setValue] = useState("")
-	const [isOpen, setIsOpen] = useState(false)
-	const [filteredOptions, setFilteredOptions] = useState(options)
-	const selectRef = useRef(null)
+	const [value, setValue] = useState("");
+	const [isOpen, setIsOpen] = useState(false);
+	const [filteredOptions, setFilteredOptions] = useState(options);
+	const selectRef = useRef(null);
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
 			if (selectRef.current && !selectRef.current.contains(event.target)) {
-				setIsOpen(false)
+				setIsOpen(false);
 			}
-		}
+		};
 
 		document.addEventListener("mousedown", handleClickOutside);
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
-		}
-	}, [])
+		};
+	}, []);
 
 	useEffect(() => {
 		if (!value.trim()) {
-			setFilteredOptions(options)
-			return
+			setFilteredOptions(options);
+			return;
 		}
 
-		const searchValue = value.toLowerCase()
+		const searchValue = value.toLowerCase();
 		const filtered = options.filter((item) => {
 			return searchKeys.some((key) => {
 				const itemValue = item[key];
 				if (itemValue && typeof itemValue === "string") {
-					return itemValue.toLowerCase().includes(searchValue)
+					return itemValue.toLowerCase().includes(searchValue);
 				}
-				return false
+				return false;
 			});
 		});
 
@@ -43,11 +43,11 @@ function Select({ setData, options, searchKeys, selectOption, placeholder, setVa
 	const handleSelectOption = (item) => {
 		setData(item);
 		if (setValueNot) {
-			setValue("")
+			setValue("");
 		} else {
-			setValue(item[searchKeys[0]])
+			setValue(item[searchKeys[0]]);
 		}
-		setIsOpen(false)
+		setIsOpen(false);
 	};
 
 	return (
@@ -56,14 +56,21 @@ function Select({ setData, options, searchKeys, selectOption, placeholder, setVa
 				<input
 					value={value}
 					onChange={(e) => {
-						setValue(e.target.value)
-						setIsOpen(true)
+						setValue(e.target.value);
+						setIsOpen(true);
 					}}
 					onClick={() => setIsOpen(true)}
 					type="text"
 					className="order-input"
 					placeholder={placeholder}
 				/>
+				<div>
+					{!options.length > 0 && (
+						<div className="select-loader">
+							<div className="spinner"></div>
+						</div>
+					)}
+				</div>
 			</div>
 			{isOpen && filteredOptions.length > 0 && (
 				<div className="select-container">
@@ -85,4 +92,4 @@ function Select({ setData, options, searchKeys, selectOption, placeholder, setVa
 	);
 }
 
-export default Select
+export default Select;
